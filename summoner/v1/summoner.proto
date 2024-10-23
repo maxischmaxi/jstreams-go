@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/summoner/v1;summonerv1";
+
+package summoner;
+
+import "champions/v1/champions.proto";
+
+service SummonerService {
+  rpc GetSummonerByPuuid(GetSummonerByPuuidRequest) returns (GetSummonerByPuuidResponse) {}
+  rpc GetSummonerSpells(GetSummonerSpellsRequest) returns (GetSummonerSpellsResponse) {}
+}
+
+enum PlatformRoutingValues {
+  BR1 = 0;
+  EUN1 = 1;
+  EUW1 = 2;
+  JP1 = 3;
+  KR = 4;
+  LA1 = 5;
+  LA2 = 6;
+  ME1 = 7;
+  NA1 = 8;
+  OC1 = 9;
+  PH1 = 10;
+  RU = 11;
+  SG2 = 12;
+  TH2 = 13;
+  TR1 = 14;
+  TW2 = 15;
+  VN2 = 16;
+}
+
+message GetSummonerByPuuidRequest {
+  string puuid = 1;
+  PlatformRoutingValues region = 2;
+}
+
+message GetSummonerByPuuidResponse {
+  Summoner summoner = 1;
+}
+
+message Summoner {
+  string id = 1;
+  string accountId = 2;
+  string puuid = 3;
+  int32 profileIconId = 4;
+  int64 revisionDate = 5;
+  int32 summonerLevel = 6;
+}
+
+message GetSummonerSpellsRequest {
+  string patchVersion = 1;
+}
+
+message GetSummonerSpellsResponse {
+  string type = 1;
+  string version = 2;
+  map<string, SummonerSpell> data = 3;
+}
+
+message SummonerSpell {
+  repeated int32 cooldown = 1;
+  string cooldownBurn = 2;
+  repeated int32 cost = 3;
+  string costBurn = 4;
+  string costType = 5;
+  map<string, string> datavalues = 6;
+  string description = 7;
+  repeated int32 effect = 8;
+  repeated string effectBurn = 9;
+  string id = 10;
+  champions.Image image = 11;
+  string key = 12;
+  string maxammo = 13;
+  int32 maxrank = 14;
+  repeated string modes = 15;
+  string name = 16;
+  repeated int32 range = 17;
+  string rangeBurn = 18;
+  string resource = 19;
+  int32 summonerLevel = 20;
+  string tooltip = 21;
+  repeated SummonerSpellVar vars = 22;
+}
+
+message SummonerSpellVar {
+  string link = 1;
+  string coeff = 2;
+  string key = 3;
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/version/v1;versionv1";
+
+package version;
+
+service VersionService {
+  rpc GetVersions(GetVersionsRequest) returns (GetVersionsResponse) {}
+}
+
+message GetVersionsRequest {
+
+}
+
+message GetVersionsResponse {
+  repeated string versions = 1;
+}

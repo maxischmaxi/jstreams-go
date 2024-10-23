@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/account/v1;accountv1";
+
+package account;
+
+service AccountService {
+  rpc GetAccountByGamenameAndTagline(GetAccountByGamenameAndTaglineRequest) returns (GetAccountByGamenameAndTaglineResponse) {}
+  rpc GetAccountProfileIcon(GetAccountProfileIconRequest) returns (GetAccountProfileIconResponse) {}
+  rpc GetAccountByPuuid(GetAccountByPuuidRequest) returns (GetAccountByPuuidResponse) {}
+}
+
+enum RegionalRoutingValues {
+  EUROPE = 0;
+  AMERICAS = 1;
+  ASIA = 2;
+  ESPORTS = 3;
+}
+
+message GetAccountByGamenameAndTaglineRequest {
+  string gamename = 1;
+  string tagline = 2;
+  RegionalRoutingValues region = 3;
+}
+
+message Account {
+  string puuid = 1;
+  string gameName = 2;
+  string tagLine = 3;
+}
+
+message GetAccountByGamenameAndTaglineResponse {
+  Account account = 1;
+}
+
+message GetAccountProfileIconRequest {
+  int32 profileIconId = 1;
+  string patchVersion = 2;
+}
+
+message GetAccountProfileIconResponse {
+  string url = 1;
+}
+
+message GetAccountByPuuidRequest {
+  string puuid = 1;
+  RegionalRoutingValues region = 2;
+}
+
+message GetAccountByPuuidResponse {
+  Account account = 1;
+}

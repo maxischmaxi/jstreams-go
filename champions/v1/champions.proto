@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/champions/v1;championsv1";
+
+package champions;
+
+service ChampionsService {
+ rpc GetChampions(GetChampionsRequest) returns (GetChampionsResponse) {}
+}
+
+message GetChampionsRequest {
+  string patchVersion = 1;
+}
+
+message GetChampionsResponse {
+  string type = 1;
+  string format = 2;
+  string version = 3;
+  map<string, Champion> data = 4;
+}
+
+message ChampionInfo {
+  int32 attack = 1;
+  int32 defense = 2;
+  int32 magic = 3;
+  int32 difficulty = 4;
+}
+
+message Champion {
+  string version = 1;
+  string id = 2;
+  string key = 3;
+  string name = 4;
+  string title = 5;
+  string blurb = 6;
+  ChampionInfo info = 7;
+  Image image = 8;
+  repeated string tags = 9;
+  string partype = 10;
+  ChampionStats stats = 11;
+}
+
+message ChampionStats {
+  int32 hp = 1;
+  int32 hpperlevel = 2;
+  int32 mp = 3;
+  int32 mpperlevel = 4;
+  int32 movespeed = 5;
+  int32 armor = 6;
+  int32 armorperlevel = 7;
+  int32 spellblock = 8;
+  int32 spellblockperlevel = 9;
+  int32 attackrange = 10;
+  int32 hpregen = 11;
+  int32 hpregenperlevel = 12;
+  int32 mpregen = 13;
+  int32 mpregenperlevel = 14;
+  int32 crit = 15;
+  int32 critperlevel = 16;
+  int32 attackdamage = 17;
+  int32 attackdamageperlevel = 18;
+  int32 attackspeed = 19;
+  int32 attackspeedperlevel = 20;
+}
+
+message Image {
+  string full = 1;
+  string sprite = 2;
+  string group = 3;
+  int32 x = 4;
+  int32 y = 5;
+  int32 w = 6;
+  int32 h = 7;
+}

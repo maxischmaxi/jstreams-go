@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/assets/v1;assetsv1";
+
+package assets;
+
+import "champions/v1/champions.proto";
+
+service AssetsService {
+  rpc GetRuneIcon(GetRuneIconRequest) returns (GetRuneIconResponse) {}
+  rpc GetSummonerSpellIcon(GetSummonerSpellIconRequest) returns (GetSummonerSpellIconResponse) {}
+  rpc GetItemAssetUrl(GetItemAssetUrlRequest) returns (GetItemAssetUrlResponse) {}
+  rpc GetSpellAssetUrl(GetSpellAssetUrlRequest) returns (GetSpellAssetUrlResponse) {}
+  rpc GetChampionAbilityAssetUrl(GetChampionAbilityAssetUrlRequest) returns (GetChampionAbilityAssetUrlResponse) {}
+  rpc GetChampionPassiveAssetUrl(GetChampionPassiveAssetUrlRequest) returns (GetChampionPassiveAssetUrlResponse) {}
+  rpc GetChampionSquareAssetUrl(GetChampionSquareAssetUrlRequest) returns (GetChampionSquareAssetUrlResponse) {}
+  rpc GetChampionLoadingScreenAssetUrl(GetChampionLoadingScreenAssetUrlRequest) returns (GetChampionLoadingScreenAssetUrlResponse) {}
+  rpc GetChampionSplashAssetUrl(GetChampionSplashAssetUrlRequest) returns (GetChampionSplashAssetUrlResponse) {}
+}
+
+message GetRuneIconRequest {
+  string patchVersion = 1;
+  int32 style = 2;
+}
+
+message GetRuneIconResponse {
+  string url = 1;
+}
+
+message GetSummonerSpellIconRequest {
+  string patchVersion = 1;
+  champions.Image image = 2;
+}
+
+message GetSummonerSpellIconResponse {
+  string url = 1;
+}
+
+message GetItemAssetUrlRequest {
+  string itemName = 1;
+  string patchVersion = 2;
+}
+
+message GetItemAssetUrlResponse {
+  string url = 1;
+}
+
+message GetSpellAssetUrlRequest {
+  string spellName = 1;
+  string patchVersion = 2;
+}
+
+message GetSpellAssetUrlResponse {
+  string url = 1;
+}
+
+message GetChampionAbilityAssetUrlRequest {
+  string championName = 1;
+  int32 abilityNumber = 2;
+  string patchVersion = 3;
+}
+
+message GetChampionAbilityAssetUrlResponse {
+  string url = 1;
+}
+
+message GetChampionPassiveAssetUrlRequest {
+  string championName = 1;
+  string patchVersion = 2;
+}
+
+message GetChampionPassiveAssetUrlResponse {
+  string url = 1;
+}
+
+message GetChampionSquareAssetUrlRequest {
+  string championName = 1;
+  string patchVersion = 2;
+}
+
+message GetChampionSquareAssetUrlResponse {
+  string url = 1;
+}
+
+message GetChampionLoadingScreenAssetUrlRequest {
+  string championName = 1;
+  int32 skinNumber = 2;
+}
+
+message GetChampionLoadingScreenAssetUrlResponse {
+  string url = 1;
+}
+
+message GetChampionSplashAssetUrlRequest {
+  string championName = 1;
+  int32 skinNumber = 2;
+}
+
+message GetChampionSplashAssetUrlResponse {
+  string url = 1;
+}

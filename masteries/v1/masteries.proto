@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/masteries/v1;masteriesv1";
+
+package masteries;
+
+import "summoner/v1/summoner.proto";
+
+service MasteriesService {
+  rpc GetChampionMasteriesByPuuid(GetChampionMasteriesRequeset) returns (GetChampionMasteriesResponse) {}
+  rpc GetChampionMasteriesByPuuidByChampion(GetChampionMasteriesByChampionRequeset) returns (GetChampionMasteriesByChampionResponse) {}
+}
+
+message GetChampionMasteriesRequeset {
+  string puuid = 1;
+  summoner.PlatformRoutingValues region = 2;
+}
+
+message NextSeasonMilestone {
+  int32 rewardMarks = 1;
+  bool bonus = 2;
+  int32 totalGamesRequires = 3;
+  map<string, int32> requireGradeCounts = 4;
+}
+
+message ChampionMastery {
+  string puuid = 1;
+  int32 championId = 2;
+  int32 championLevel = 3;
+  int32 championPoints = 4;
+  int64 lastPlayTime = 5;
+  int32 championPointsSinceLastLevel = 6;
+  int32 championPointsUntilNextLevel = 7;
+  int32 markRequiredForNextLevel = 8;
+  int32 tokensEarned = 9;
+  int32 championSeasonMilestone = 10;
+  repeated string milestoneGrades = 11;
+  NextSeasonMilestone nextSeasonMilestone = 12;
+}
+
+message GetChampionMasteriesResponse {
+  repeated ChampionMastery championMasteries = 1;
+}
+
+message GetChampionMasteriesByChampionRequeset {
+  string puuid = 1;
+  int32 championId = 2;
+  summoner.PlatformRoutingValues region = 3;
+}
+
+message GetChampionMasteriesByChampionResponse {
+  ChampionMastery championMastery = 1;
+}

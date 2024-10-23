@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/entries/v1;entriesv1";
+
+package entries;
+
+import "summoner/v1/summoner.proto";
+
+service EntriesService {
+  rpc GetEntriesBySummoner(GetEntriesBySummonerRequest) returns (GetEntriesBySummonerResponse) {}
+}
+
+message GetEntriesBySummonerRequest {
+  summoner.PlatformRoutingValues region = 1;
+  string summonerId = 2;
+}
+
+message GetEntriesBySummonerResponse {
+  repeated SummonerEntry entries = 1;
+}
+
+message SummonerEntry {
+  string leagueId = 1;
+  string queueId = 2;
+  string tier = 3;
+  string rank = 4;
+  string summonerId = 5;
+  int32 leaguePoints = 6;
+  int32 wins = 7;
+  int32 losses = 8;
+  bool veteran = 9;
+  bool inactive = 10;
+  bool freshBlood = 11;
+  bool hotStreak = 12;
+}

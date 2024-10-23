@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option go_package = "github.com/maxischmaxi/jstreams-go/tier/v1;tierv1";
+
+package tier;
+
+service TierService {
+  rpc GetTierIcon(GetTierIconRequest) returns (GetTierIconResponse) {}
+}
+
+message GetTierIconRequest {
+  string tier = 1;
+  string patchVersion = 2;
+}
+
+message GetTierIconResponse {
+  string url = 1;
+}
