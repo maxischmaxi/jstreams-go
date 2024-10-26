@@ -333,26 +333,26 @@ type ChampionStats struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Hp                   int32 `protobuf:"varint,1,opt,name=hp,proto3" json:"hp,omitempty"`
-	Hpperlevel           int32 `protobuf:"varint,2,opt,name=hpperlevel,proto3" json:"hpperlevel,omitempty"`
-	Mp                   int32 `protobuf:"varint,3,opt,name=mp,proto3" json:"mp,omitempty"`
-	Mpperlevel           int32 `protobuf:"varint,4,opt,name=mpperlevel,proto3" json:"mpperlevel,omitempty"`
-	Movespeed            int32 `protobuf:"varint,5,opt,name=movespeed,proto3" json:"movespeed,omitempty"`
-	Armor                int32 `protobuf:"varint,6,opt,name=armor,proto3" json:"armor,omitempty"`
-	Armorperlevel        int32 `protobuf:"varint,7,opt,name=armorperlevel,proto3" json:"armorperlevel,omitempty"`
-	Spellblock           int32 `protobuf:"varint,8,opt,name=spellblock,proto3" json:"spellblock,omitempty"`
-	Spellblockperlevel   int32 `protobuf:"varint,9,opt,name=spellblockperlevel,proto3" json:"spellblockperlevel,omitempty"`
-	Attackrange          int32 `protobuf:"varint,10,opt,name=attackrange,proto3" json:"attackrange,omitempty"`
-	Hpregen              int32 `protobuf:"varint,11,opt,name=hpregen,proto3" json:"hpregen,omitempty"`
-	Hpregenperlevel      int32 `protobuf:"varint,12,opt,name=hpregenperlevel,proto3" json:"hpregenperlevel,omitempty"`
-	Mpregen              int32 `protobuf:"varint,13,opt,name=mpregen,proto3" json:"mpregen,omitempty"`
-	Mpregenperlevel      int32 `protobuf:"varint,14,opt,name=mpregenperlevel,proto3" json:"mpregenperlevel,omitempty"`
-	Crit                 int32 `protobuf:"varint,15,opt,name=crit,proto3" json:"crit,omitempty"`
-	Critperlevel         int32 `protobuf:"varint,16,opt,name=critperlevel,proto3" json:"critperlevel,omitempty"`
-	Attackdamage         int32 `protobuf:"varint,17,opt,name=attackdamage,proto3" json:"attackdamage,omitempty"`
-	Attackdamageperlevel int32 `protobuf:"varint,18,opt,name=attackdamageperlevel,proto3" json:"attackdamageperlevel,omitempty"`
-	Attackspeed          int32 `protobuf:"varint,19,opt,name=attackspeed,proto3" json:"attackspeed,omitempty"`
-	Attackspeedperlevel  int32 `protobuf:"varint,20,opt,name=attackspeedperlevel,proto3" json:"attackspeedperlevel,omitempty"`
+	Hp                   int32   `protobuf:"varint,1,opt,name=hp,proto3" json:"hp,omitempty"`
+	Hpperlevel           int32   `protobuf:"varint,2,opt,name=hpperlevel,proto3" json:"hpperlevel,omitempty"`
+	Mp                   int32   `protobuf:"varint,3,opt,name=mp,proto3" json:"mp,omitempty"`
+	Mpperlevel           int32   `protobuf:"varint,4,opt,name=mpperlevel,proto3" json:"mpperlevel,omitempty"`
+	Movespeed            int32   `protobuf:"varint,5,opt,name=movespeed,proto3" json:"movespeed,omitempty"`
+	Armor                int32   `protobuf:"varint,6,opt,name=armor,proto3" json:"armor,omitempty"`
+	Armorperlevel        float32 `protobuf:"fixed32,7,opt,name=armorperlevel,proto3" json:"armorperlevel,omitempty"`
+	Spellblock           int32   `protobuf:"varint,8,opt,name=spellblock,proto3" json:"spellblock,omitempty"`
+	Spellblockperlevel   int32   `protobuf:"varint,9,opt,name=spellblockperlevel,proto3" json:"spellblockperlevel,omitempty"`
+	Attackrange          int32   `protobuf:"varint,10,opt,name=attackrange,proto3" json:"attackrange,omitempty"`
+	Hpregen              int32   `protobuf:"varint,11,opt,name=hpregen,proto3" json:"hpregen,omitempty"`
+	Hpregenperlevel      int32   `protobuf:"varint,12,opt,name=hpregenperlevel,proto3" json:"hpregenperlevel,omitempty"`
+	Mpregen              int32   `protobuf:"varint,13,opt,name=mpregen,proto3" json:"mpregen,omitempty"`
+	Mpregenperlevel      int32   `protobuf:"varint,14,opt,name=mpregenperlevel,proto3" json:"mpregenperlevel,omitempty"`
+	Crit                 int32   `protobuf:"varint,15,opt,name=crit,proto3" json:"crit,omitempty"`
+	Critperlevel         int32   `protobuf:"varint,16,opt,name=critperlevel,proto3" json:"critperlevel,omitempty"`
+	Attackdamage         int32   `protobuf:"varint,17,opt,name=attackdamage,proto3" json:"attackdamage,omitempty"`
+	Attackdamageperlevel int32   `protobuf:"varint,18,opt,name=attackdamageperlevel,proto3" json:"attackdamageperlevel,omitempty"`
+	Attackspeed          int32   `protobuf:"varint,19,opt,name=attackspeed,proto3" json:"attackspeed,omitempty"`
+	Attackspeedperlevel  int32   `protobuf:"varint,20,opt,name=attackspeedperlevel,proto3" json:"attackspeedperlevel,omitempty"`
 }
 
 func (x *ChampionStats) Reset() {
@@ -427,7 +427,7 @@ func (x *ChampionStats) GetArmor() int32 {
 	return 0
 }
 
-func (x *ChampionStats) GetArmorperlevel() int32 {
+func (x *ChampionStats) GetArmorperlevel() float32 {
 	if x != nil {
 		return x.Armorperlevel
 	}
@@ -681,7 +681,7 @@ var file_champions_v1_champions_proto_rawDesc = []byte{
 	0x70, 0x65, 0x65, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x61, 0x72, 0x6d, 0x6f, 0x72, 0x18, 0x06, 0x20,
 	0x01, 0x28, 0x05, 0x52, 0x05, 0x61, 0x72, 0x6d, 0x6f, 0x72, 0x12, 0x24, 0x0a, 0x0d, 0x61, 0x72,
 	0x6d, 0x6f, 0x72, 0x70, 0x65, 0x72, 0x6c, 0x65, 0x76, 0x65, 0x6c, 0x18, 0x07, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x0d, 0x61, 0x72, 0x6d, 0x6f, 0x72, 0x70, 0x65, 0x72, 0x6c, 0x65, 0x76, 0x65, 0x6c,
+	0x02, 0x52, 0x0d, 0x61, 0x72, 0x6d, 0x6f, 0x72, 0x70, 0x65, 0x72, 0x6c, 0x65, 0x76, 0x65, 0x6c,
 	0x12, 0x1e, 0x0a, 0x0a, 0x73, 0x70, 0x65, 0x6c, 0x6c, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x18, 0x08,
 	0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x73, 0x70, 0x65, 0x6c, 0x6c, 0x62, 0x6c, 0x6f, 0x63, 0x6b,
 	0x12, 0x2e, 0x0a, 0x12, 0x73, 0x70, 0x65, 0x6c, 0x6c, 0x62, 0x6c, 0x6f, 0x63, 0x6b, 0x70, 0x65,
